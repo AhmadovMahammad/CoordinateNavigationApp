@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Font Families -->
+    <FontFamily x:Key="Regular">pack://application:,,,/Assets/Fonts/#Montserrat Regular</FontFamily>
+    <FontFamily x:Key="Light">pack://application:,,,/Assets/Fonts/#Montserrat Light</FontFamily>
+    <FontFamily x:Key="Medium">pack://application:,,,/Assets/Fonts/#Montserrat Medium</FontFamily>
+
+</ResourceDictionary>

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{042E5B18-11F4-4F3A-926B-0B16F134DADF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D9360847-F933-44C0-9E8C-4228971838AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoordinateNavigation", "src\CoordinateNavigation\CoordinateNavigation.csproj", "{EC3537E9-0658-43D4-8A1E-7AA5C1528215}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC3537E9-0658-43D4-8A1E-7AA5C1528215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC3537E9-0658-43D4-8A1E-7AA5C1528215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC3537E9-0658-43D4-8A1E-7AA5C1528215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC3537E9-0658-43D4-8A1E-7AA5C1528215}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC3537E9-0658-43D4-8A1E-7AA5C1528215} = {042E5B18-11F4-4F3A-926B-0B16F134DADF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {302061F6-BDFC-41BF-9FB0-867E889BECD3}
+	EndGlobalSection
+EndGlobal

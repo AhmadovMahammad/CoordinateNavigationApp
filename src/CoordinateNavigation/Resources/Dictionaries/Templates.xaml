@@ -1,0 +1,278 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:controls="clr-namespace:CoordinateNavigation.Controls.CustomControls">
+
+    <!-- Reusable templates -->
+    <DataTemplate x:Key="dd_template">
+        <Border Style="{StaticResource TemplateBorderStyle}">
+            <Grid DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Latitude Section -->
+                <StackPanel Grid.Column="0">
+
+                    <!--Title for Latitude-->
+                    <DockPanel VerticalAlignment="Center" LastChildFill="False">
+                        <TextBlock Text="Latitude in Degrees" 
+                                   Style="{StaticResource CoordinateTitleStyle}"
+                                   DockPanel.Dock="Left" />
+                        <Button Style="{StaticResource InfoButtonStyle}"
+                                DockPanel.Dock="Right">
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTipStyle}">
+                                    Enter values from 0 to 90. The direction selection determines the hemisphere (e.g., 45° North). 
+                                    Avoid using negative values, as the direction ComboBox will handle this.
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                    </DockPanel>
+
+                    <!--Degrees Input for Latitude-->
+                    <StackPanel Margin="0, 0, 0, 5">
+                        <TextBlock Text="Input Latitude in Decimal Degrees"
+                                   Style="{StaticResource InputPlaceholderStyle}" />
+                        <controls:NumericControl Value="{Binding Latitude.Degrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 StringFormat="F0"
+                                                 Height="30"
+                                                 BorderBrush="{StaticResource BorderColor}"
+                                                 BorderThickness="1" 
+                                                 Padding="5" />
+                    </StackPanel>
+
+                    <!--Direction Input for Latitude-->
+                    <StackPanel Margin="0, 0, 0, 5">
+                        <TextBlock Text="North or South of the Equator"
+                                   Style="{StaticResource InputPlaceholderStyle}" />
+                        <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Longitude Section -->
+                <StackPanel Grid.Column="2">
+
+                    <!--Title for Longitude-->
+                    <DockPanel VerticalAlignment="Center" LastChildFill="False">
+                        <TextBlock Text="Longitude in Degrees" 
+                                   Style="{StaticResource CoordinateTitleStyle}" 
+                                   DockPanel.Dock="Left" />
+                        <Button Style="{StaticResource InfoButtonStyle}"
+                                DockPanel.Dock="Right" >
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTipStyle}">
+                                    Enter values from 0 to 180. Use the direction ComboBox to choose "East" or "West" (e.g., 120° West). 
+                                    As with latitude, input values are non-negative.
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                    </DockPanel>
+
+                    <!--Degrees Input for Latitude-->
+                    <StackPanel Margin="0, 0, 0, 5">
+                        <TextBlock Text="Input Longitude in Decimal Degrees"
+                                   Style="{StaticResource InputPlaceholderStyle}" />
+                        <controls:NumericControl Value="{Binding Longitude.Degrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 StringFormat="F0"
+                                                 Height="30"
+                                                 BorderBrush="{StaticResource BorderColor}"
+                                                 BorderThickness="1"
+                                                 Padding="5" />
+                    </StackPanel>
+
+                    <!--Direction Input for Longitude-->
+                    <StackPanel Margin="0, 0, 0, 5">
+                        <TextBlock Text="East or West of the Prime Meridian"
+                                   Style="{StaticResource InputPlaceholderStyle}" />
+                        <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="dms_template">
+        <Border Style="{StaticResource TemplateBorderStyle}">
+            <Grid DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Latitude Section-->
+                <StackPanel>
+
+                    <!--Title for Latitude-->
+                    <DockPanel VerticalAlignment="Center" LastChildFill="False">
+                        <TextBlock Text="Latitude in Degrees, Minutes, Seconds" 
+                                   Style="{StaticResource CoordinateTitleStyle}"
+                                   DockPanel.Dock="Left" />
+                        <Button Style="{StaticResource InfoButtonStyle}"
+                                DockPanel.Dock="Right" >
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTipStyle}">
+                                    Enter values from 0 to 90. The direction selection determines the hemisphere (e.g., 45° North). 
+                                    Avoid using negative values, as the direction ComboBox will handle this.
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                    </DockPanel>
+
+                    <StackPanel>
+                        <!--Degrees Input for Latitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="Degrees (°)"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <controls:NumericControl Value="{Binding Latitude.Degrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     Height="30"
+                                                     BorderBrush="{StaticResource BorderColor}"
+                                                     BorderThickness="1" 
+                                                     Padding="5" />
+                        </StackPanel>
+
+                        <!--Minutes Input for Latitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="Minutes (‘)"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <controls:NumericControl Value="{Binding Latitude.Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     Height="30"
+                                                     BorderBrush="{StaticResource BorderColor}"
+                                                     BorderThickness="1" 
+                                                     Padding="5" />
+                        </StackPanel>
+
+                        <!--Seconds Input for Latitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="Seconds (”)"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <controls:NumericControl Value="{Binding Latitude.Seconds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     Height="30"
+                                                     BorderBrush="{StaticResource BorderColor}"
+                                                     BorderThickness="1" 
+                                                     Padding="5" />
+                        </StackPanel>
+
+                        <!--Direction Input for Latitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="North or South of the Equator"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <!--Longitude Section-->
+                <StackPanel Grid.Column="2">
+
+                    <!--Title for Longitude-->
+                    <DockPanel VerticalAlignment="Center" LastChildFill="False">
+                        <TextBlock Text="Longitude in Degrees, Minutes, Seconds" 
+                                   Style="{StaticResource CoordinateTitleStyle}"
+                                   DockPanel.Dock="Left" />
+                        <Button Style="{StaticResource InfoButtonStyle}"
+                                DockPanel.Dock="Right" >
+                            <Button.ToolTip>
+                                <ToolTip Style="{StaticResource ToolTipStyle}">
+                                    Enter values from 0 to 180. Use the direction ComboBox to choose "East" or "West" (e.g., 120° West). 
+                                    As with latitude, input values are non-negative.
+                                </ToolTip>
+                            </Button.ToolTip>
+                        </Button>
+                    </DockPanel>
+
+                    <StackPanel>
+                        <!--Degrees Input for Longitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="Degrees (°)"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <controls:NumericControl Value="{Binding Longitude.Degrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     Height="30"
+                                                     BorderBrush="{StaticResource BorderColor}"
+                                                     BorderThickness="1" 
+                                                     Padding="5" />
+                        </StackPanel>
+
+                        <!--Minutes Input for Longitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="Minutes (‘)"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <controls:NumericControl Value="{Binding Longitude.Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     Height="30"
+                                                     BorderBrush="{StaticResource BorderColor}"
+                                                     BorderThickness="1"
+                                                     Padding="5" />
+                        </StackPanel>
+
+                        <!--Seconds Input for Longitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="Seconds (”)"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <controls:NumericControl Value="{Binding Longitude.Seconds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     Height="30"
+                                                     BorderBrush="{StaticResource BorderColor}"
+                                                     BorderThickness="1" 
+                                                     Padding="5" />
+                        </StackPanel>
+
+                        <!--Direction Input for Longitude-->
+                        <StackPanel Margin="0, 0, 0, 5">
+                            <TextBlock Text="East or West of the Prime Meridian"
+                                       Style="{StaticResource InputPlaceholderStyle}" />
+                            <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="operations_template">
+        <StackPanel DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+            <Button Content="⇄"
+                    Command="{Binding ToggleCoordinateTypeCommand}"
+                    Style="{StaticResource OperationButtonStyle}"
+                    ToolTip="Swap Coordinates"
+                    AutomationProperties.Name="Swap Coordinates Button" />
+            <Button Content="🗺"
+                    Style="{StaticResource OperationButtonStyle}"
+                    ToolTip="Display in Map" />
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- template: DD to DMS -->
+    <DataTemplate x:Key="dd2dms_template">
+        <Grid DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="45*" />
+            </Grid.ColumnDefinitions>
+
+            <ContentControl DataContext="{Binding DecimalCoordinateViewModel}" Grid.Column="0" ContentTemplate="{StaticResource dd_template}" />
+            <ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />
+            <ContentControl DataContext="{Binding DmsCoordinateViewModel}" Grid.Column="2" ContentTemplate="{StaticResource dms_template}" IsEnabled="False" />
+
+        </Grid>
+    </DataTemplate>
+
+    <!-- template: DMS to DD -->
+    <DataTemplate x:Key="dms2dd_template">
+        <Grid DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="45*" />
+            </Grid.ColumnDefinitions>
+
+            <ContentControl DataContext="{Binding DmsCoordinateViewModel}" Grid.Column="0" ContentTemplate="{StaticResource dms_template}" />
+            <ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />
+            <ContentControl DataContext="{Binding DecimalCoordinateViewModel}" Grid.Column="2" ContentTemplate="{StaticResource dd_template}" IsEnabled="False" />
+
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

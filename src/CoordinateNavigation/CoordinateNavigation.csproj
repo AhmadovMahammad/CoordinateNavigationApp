@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="Assets\Icons\" />
+		<Folder Include="Constants\Enums\" />
+		<Folder Include="Controls\CustomControls\" />
+		<Folder Include="Converters\MultiValueConverters\" />
+		<Folder Include="Converters\ValueConverters\" />
+		<Folder Include="Helpers\Extensions\" />
+		<Folder Include="Helpers\Utilities\" />
+		<Folder Include="MVVM\Views\Components\" />
+		<Folder Include="MVVM\Views\Pages\" />
+		<Folder Include="Resources\Dictionaries\" />
+		<Folder Include="Resources\Themes\" />
+		<Folder Include="Selectors\StyleSelectors\" />
+		<Folder Include="Selectors\DataTemplateSelectors\" />
+		<Folder Include="Services\Interfaces\" />
+		<Folder Include="Services\Implementations\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+		<PackageReference Include="MahApps.Metro" Version="2.4.10" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\Fonts\Montserrat-Light.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Assets\Fonts\Montserrat-Medium.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Assets\Fonts\Montserrat-Regular.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
+
+</Project>
