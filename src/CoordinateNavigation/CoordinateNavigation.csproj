@@ -14,7 +14,6 @@
 		<Folder Include="Controls\CustomControls\" />
 		<Folder Include="Converters\MultiValueConverters\" />
 		<Folder Include="Converters\ValueConverters\" />
-		<Folder Include="Helpers\Extensions\" />
 		<Folder Include="Helpers\Utilities\" />
 		<Folder Include="MVVM\Views\Components\" />
 		<Folder Include="MVVM\Views\Pages\" />

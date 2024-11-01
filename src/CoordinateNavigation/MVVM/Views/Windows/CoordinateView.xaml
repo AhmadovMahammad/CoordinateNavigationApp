@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoordinateNavigation" 
-        xmlns:selector="clr-namespace:CoordinateNavigation.Selectors.DataTemplateSelectors"
+        xmlns:selector="clr-namespace:CoordinateNavigation.Selectors.DataTemplateSelectors" xmlns:extensions="clr-namespace:CoordinateNavigation.Helpers.Extensions"
         mc:Ignorable="d" Title="Coordinate Navigator"
         WindowState="Maximized" ResizeMode="CanResizeWithGrip"
         Background="{StaticResource PrimaryBackground}"
@@ -16,6 +16,11 @@
                                              Dd2DmsTemplate="{StaticResource dd2dms_template}"
                                              Dms2DdTemplate="{StaticResource dms2dd_template}" />
     </Window.Resources>
+
+    <Window.InputBindings>
+        <extensions:RelayKeyBinding Key="L"
+                                    CommandBinding="{Binding ToggleCoordinateTypeCommand}"/>
+    </Window.InputBindings>
 
     <Grid Margin="10, 5">
         <Grid.RowDefinitions>
