@@ -24,8 +24,10 @@
                                 DockPanel.Dock="Right">
                             <Button.ToolTip>
                                 <ToolTip Style="{StaticResource ToolTipStyle}">
-                                    Enter values from 0 to 90. The direction selection determines the hemisphere (e.g., 45° North). 
-                                    Avoid using negative values, as the direction ComboBox will handle this.
+                                    Decimal degrees (DD) is a modern format to express latitude and longitude as decimal fractions, they can typically be found displayed on Global Positioning System (GPS) receivers and web mapping applications.
+
+                                    For example, the geographical coordinates expressed in decimal degrees (DD) for London are:
+                                    Latitude: 51.509865
                                 </ToolTip>
                             </Button.ToolTip>
                         </Button>
@@ -56,8 +58,10 @@
                                 DockPanel.Dock="Right" >
                             <Button.ToolTip>
                                 <ToolTip Style="{StaticResource ToolTipStyle}">
-                                    Enter values from 0 to 180. Use the direction ComboBox to choose "East" or "West" (e.g., 120° West). 
-                                    As with latitude, input values are non-negative.
+                                    Decimal degrees (DD) is a modern format to express latitude and longitude as decimal fractions, they can typically be found displayed on Global Positioning System (GPS) receivers and web mapping applications.
+
+                                    For example, the geographical coordinates expressed in decimal degrees (DD) for London are:
+                                    Longitude: -0.118092
                                 </ToolTip>
                             </Button.ToolTip>
                         </Button>
@@ -100,8 +104,11 @@
                                 DockPanel.Dock="Right" >
                             <Button.ToolTip>
                                 <ToolTip Style="{StaticResource ToolTipStyle}">
-                                    Enter values from 0 to 90. The direction selection determines the hemisphere (e.g., 45° North). 
-                                    Avoid using negative values, as the direction ComboBox will handle this.
+                                    One way of representing latitude and longitude is to use degrees, minutes and seconds (DMS). 
+                                    This is the oldest format for representing geographical coordinates.
+                                    
+                                    For example, the geographic coordinates expressed in degrees, minutes and seconds (DMS) for London, UK are:
+                                    Latitude: 51° 30′ 35.5140” N
                                 </ToolTip>
                             </Button.ToolTip>
                         </Button>
@@ -165,8 +172,11 @@
                                 DockPanel.Dock="Right" >
                             <Button.ToolTip>
                                 <ToolTip Style="{StaticResource ToolTipStyle}">
-                                    Enter values from 0 to 180. Use the direction ComboBox to choose "East" or "West" (e.g., 120° West). 
-                                    As with latitude, input values are non-negative.
+                                    One way of representing latitude and longitude is to use degrees, minutes and seconds (DMS). 
+                                    This is the oldest format for representing geographical coordinates.
+                                    
+                                    For example, the geographic coordinates expressed in degrees, minutes and seconds (DMS) for London, UK are:
+                                    Longitude: 0° 7′ 5.1312” W
                                 </ToolTip>
                             </Button.ToolTip>
                         </Button>

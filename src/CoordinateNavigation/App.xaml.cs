@@ -16,7 +16,9 @@ namespace CoordinateNavigation
         {
             _host = Host.CreateDefaultBuilder().ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
+                serviceCollection.AddSingleton<IEventAggregator, EventAggregator>();
                 serviceCollection.AddSingleton<ICoordinateService, CoordinateService>();
+
                 serviceCollection.AddSingleton<CoordinateViewModel>();
                 serviceCollection.AddSingleton(serviceProvider =>
                 {

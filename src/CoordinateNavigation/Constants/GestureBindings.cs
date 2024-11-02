@@ -9,5 +9,6 @@ namespace CoordinateNavigation.Constants
         public static readonly KeyGesture ViewInMapGesture = new(Key.M, ModifierKeys.Control);
         public static readonly KeyGesture CopyGesture = new(Key.C, ModifierKeys.Control);
         public static readonly KeyGesture ClearGesture = new(Key.N, ModifierKeys.Control);
+        public static readonly KeyGesture ToggleAutoConversionGesture = new(Key.F, ModifierKeys.Control);
     }
 }

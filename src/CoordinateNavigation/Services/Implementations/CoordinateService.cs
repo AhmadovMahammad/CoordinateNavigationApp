@@ -1,6 +1,7 @@
 ﻿using CoordinateNavigation.Constants.Enums;
 using CoordinateNavigation.MVVM.Models;
 using CoordinateNavigation.Services.Interfaces;
+using System.Net;
 
 namespace CoordinateNavigation.Services.Implementations
 {
@@ -11,17 +12,15 @@ namespace CoordinateNavigation.Services.Implementations
             //Example: Convert DMS: 51° 30' 35.5140" to Decimal Degrees
             //DD = d + (m / 60) + (s / 3600) = 51.509865
 
-            int sign = (dms.FromLatitude
-                ? (dms.EarthDirection == EarthDirection.North ? 1 : -1)
-                : (dms.EarthDirection == EarthDirection.East ? 1 : -1));
-
             double degrees = dms.Degrees + (dms.Minutes / 60) + (dms.Seconds / 3600);
 
-            return new Coordinate(dms.FromLatitude)
+            Coordinate coordinate = new Coordinate(dms.FromLatitude)
             {
-                Degrees = sign * degrees,
-                FromDms = !dms.FromDms,
+                CordFormat = CoordinateFormat.DD,
+                Degrees = dms.Sign * degrees,
             };
+
+            return coordinate;
         }
 
         public Coordinate GetDms(Coordinate dd)
@@ -39,10 +38,10 @@ namespace CoordinateNavigation.Services.Implementations
 
             var coordinate = new Coordinate(dd.FromLatitude)
             {
+                CordFormat = CoordinateFormat.DMS,
                 Degrees = degrees,
                 Minutes = minutes,
                 Seconds = seconds,
-                FromDms = !dd.FromDms,
             };
 
             if (dd.FromLatitude) coordinate.EarthDirection = dd.Degrees >= 0 ? EarthDirection.North : EarthDirection.South;

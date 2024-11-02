@@ -1,13 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CoordinateNavigation.Events;
+using CoordinateNavigation.MVVM.Models;
 using CoordinateNavigation.Services.Interfaces;
 using System.Windows;
+using CoordinateNavigation.Constants.Enums;
 
 namespace CoordinateNavigation.MVVM.ViewModels
 {
     public partial class CoordinateViewModel : ObservableObject
     {
+        private readonly IEventAggregator _eventAggregator;
+
         [ObservableProperty] private bool _isDmsCoordinate;
+        [ObservableProperty] private bool _isActiveAutoConversion = true;
         [ObservableProperty] private BaseCoordinateViewModel _decimalCoordinate;
         [ObservableProperty] private BaseCoordinateViewModel _dmsCoordinate;
 
@@ -16,12 +22,16 @@ namespace CoordinateNavigation.MVVM.ViewModels
         public RelayCommand? CopyCoordinateCommand { get; private set; }
         public RelayCommand? ViewInMapCommand { get; private set; }
         public RelayCommand? ClearFieldsCommand { get; private set; }
+        public RelayCommand? ToggleAutoConversionCommand { get; private set; }
 
-        public CoordinateViewModel(ICoordinateService coordinateService)
+        public CoordinateViewModel(IEventAggregator eventAggregator, ICoordinateService coordinateService)
         {
-            DecimalCoordinate = new DecimalCoordinateViewModel(coordinateService);
-            DmsCoordinate = new DmsCoordinateViewModel(coordinateService);
+            _eventAggregator = eventAggregator;
 
+            DecimalCoordinate = new DecimalCoordinateViewModel(eventAggregator, coordinateService);
+            DmsCoordinate = new DmsCoordinateViewModel(eventAggregator, coordinateService);
+
+            _eventAggregator.Subscribe<CoordinateChangedEvent>(OnCoordinateChanged);
             InitializeCommands();
         }
 
@@ -34,6 +44,7 @@ namespace CoordinateNavigation.MVVM.ViewModels
             CopyCoordinateCommand = new RelayCommand(OnCopyCoordinateClicked);
             ViewInMapCommand = new RelayCommand(OnViewInMapClicked);
             ClearFieldsCommand = new RelayCommand(OnClearFieldsClicked);
+            ToggleAutoConversionCommand = new RelayCommand(OnToggleAutoConversionClicked);
         }
 
         private void OnCoordinateTypeToggled()
@@ -88,6 +99,23 @@ namespace CoordinateNavigation.MVVM.ViewModels
         {
             DecimalCoordinate.ClearFields();
             DmsCoordinate.ClearFields();
+        }
+
+        private void OnToggleAutoConversionClicked()
+        {
+            IsActiveAutoConversion = !IsActiveAutoConversion;
+
+            if (IsActiveAutoConversion) _eventAggregator.Subscribe<CoordinateChangedEvent>(OnCoordinateChanged);
+            else _eventAggregator.Unsubscribe<CoordinateChangedEvent>(OnCoordinateChanged);
+        }
+
+        // event actions
+        private void OnCoordinateChanged(CoordinateChangedEvent coordinateChangedEvent)
+        {
+            Coordinate coordinate = coordinateChangedEvent.Coordinate;
+            if (IsDmsCoordinate != (coordinate.CordFormat == CoordinateFormat.DMS)) return;
+
+            OnConvertCoordinateClicked();
         }
     }
 }

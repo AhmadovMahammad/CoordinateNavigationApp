@@ -10,7 +10,6 @@ namespace CoordinateNavigation.MVVM.Models
         private double _degrees;
         private double? _minutes;
         private double? _seconds;
-        private int _sign;
         private EarthDirection _earthDirection;
 
         public double Degrees
@@ -99,27 +98,28 @@ namespace CoordinateNavigation.MVVM.Models
         }
 
         public bool FromLatitude { get; } = fromLatitude;
-        public bool FromDms { get; set; }
+        public CoordinateFormat CordFormat { get; set; }
         public int Sign
         {
             get
             {
-                return FromDms switch
+                return CordFormat switch
                 {
-                    true => EarthDirection switch
+                    CoordinateFormat.DMS => EarthDirection switch
                     {
-                        EarthDirection.North or EarthDirection.South => 1,
-                        EarthDirection.East or EarthDirection.West => -1,
+                        EarthDirection.North or EarthDirection.East => 1,
+                        EarthDirection.South or EarthDirection.West => -1,
                         _ => 1
                     },
-                    false => Degrees >= 0 ? 1 : -1,
+                    CoordinateFormat.DD => Degrees >= 0 ? 1 : -1,
+                    _ => 1,
                 };
             }
         }
 
         // Calculated Properties
         private double MaxDegree => FromLatitude ? 90 : 180;
-        private double MinDegree => FromDms ? 0 : (FromLatitude ? -90 : -180);
+        private double MinDegree => CordFormat == CoordinateFormat.DMS ? 0 : (FromLatitude ? -90 : -180);
 
         // Events
         public event PropertyChangedEventHandler? PropertyChanged;

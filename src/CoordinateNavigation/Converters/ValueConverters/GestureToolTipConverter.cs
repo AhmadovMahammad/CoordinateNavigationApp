@@ -17,6 +17,7 @@ namespace CoordinateNavigation.Converters.ValueConverters
                 "CopyCoordinate" => $"Copy coordinate using {GestureBindings.CopyGesture.Modifiers} + {GestureBindings.CopyGesture.Key}",
                 "ClearFields" => $"Clear fields with {GestureBindings.ClearGesture.Modifiers} + {GestureBindings.ClearGesture.Key}",
                 "ViewInMap" => $"View coordinates on map using {GestureBindings.ViewInMapGesture.Modifiers} + {GestureBindings.ViewInMapGesture.Key}",
+                "ToggleAutoConversion" => $"Toggle auto conversion using {GestureBindings.ToggleAutoConversionGesture.Modifiers} + {GestureBindings.ToggleAutoConversionGesture.Key}",
                 _ => "Unknown command"
             };
         }
