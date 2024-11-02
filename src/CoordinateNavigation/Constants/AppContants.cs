@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace CoordinateNavigation.Constants
+﻿namespace CoordinateNavigation.Constants
 {
     public static class AppContants
     {
