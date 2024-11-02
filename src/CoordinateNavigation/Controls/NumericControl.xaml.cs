@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace CoordinateNavigation.Controls.CustomControls
+namespace CoordinateNavigation.Controls
 {
     public partial class NumericControl : UserControl
     {

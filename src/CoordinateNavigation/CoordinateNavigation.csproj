@@ -11,7 +11,6 @@
 	<ItemGroup>
 		<Folder Include="Assets\Icons\" />
 		<Folder Include="Constants\Enums\" />
-		<Folder Include="Controls\CustomControls\" />
 		<Folder Include="Converters\MultiValueConverters\" />
 		<Folder Include="Converters\ValueConverters\" />
 		<Folder Include="Helpers\Utilities\" />

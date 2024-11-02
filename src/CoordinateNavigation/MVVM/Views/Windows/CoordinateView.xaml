@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CoordinateNavigation" 
+        xmlns:local="clr-namespace:CoordinateNavigation"
         xmlns:selector="clr-namespace:CoordinateNavigation.Selectors.DataTemplateSelectors" 
         xmlns:extensions="clr-namespace:CoordinateNavigation.Helpers.Extensions"
         xmlns:constants="clr-namespace:CoordinateNavigation.Constants"
@@ -11,7 +11,7 @@
         WindowState="Maximized" ResizeMode="CanResizeWithGrip"
         Background="{StaticResource PrimaryBackground}"
         DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=Window}}"
-        MinHeight="400" Height="450" MinWidth="600" Width="800">
+        MinHeight="500" Height="550" MinWidth="950">
 
     <Window.Resources>
         <selector:CoordinateTemplateSelector x:Key="coordinateTemplateSelector"
@@ -36,12 +36,20 @@
                Foreground="{StaticResource SecondaryTextColor}"
                FontSize="25" FontFamily="{StaticResource Medium}" />
 
-        <!-- MAIN OPERATIONS -->
+        <!-- COORDINATES -->
         <Border CornerRadius="5" Padding="5" Grid.Row="1">
             <ContentControl DataContext="{Binding}"
                             Content="{Binding IsDmsCoordinate}"
                             ContentTemplateSelector="{StaticResource coordinateTemplateSelector}" />
         </Border>
 
+        <!-- COMMANDS -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+        </Grid>
     </Grid>
 </Window>
