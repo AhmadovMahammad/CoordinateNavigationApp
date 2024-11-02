@@ -29,6 +29,7 @@ namespace CoordinateNavigation.Helpers.Extensions
             set => SetValue(GestureBindingProperty, value);
         }
 
+
         // events
         private static void OnCommandBindingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -39,6 +40,7 @@ namespace CoordinateNavigation.Helpers.Extensions
         private static void OnGestureBindingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var keyBinding = (RelayGestureBinding)d;
+
             if (e.NewValue is KeyGesture keyGesture)
             {
                 keyBinding.Key = keyGesture.Key;

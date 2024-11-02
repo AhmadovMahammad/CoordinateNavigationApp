@@ -22,20 +22,13 @@
         </Setter>
 
         <Style.Triggers>
-            <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+                <Setter Property="Opacity" Value="0.85" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -45,16 +38,6 @@
     </Style>
 
     <!-- Custom Styles -->
-    <Style x:Key="OperationButtonStyle" BasedOn="{StaticResource templateButtonStyle}" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource SecondaryBackground}"/>
-        <Setter Property="Foreground" Value="{StaticResource HighlightColor}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="8, 2"/>
-        <Setter Property="Margin" Value="5, 0, 5, 5"/>
-        <Setter Property="MinWidth" Value="60"/>
-    </Style>
-
     <Style x:Key="CoordinateTitleStyle" TargetType="TextBlock" BasedOn="{StaticResource baseTextblockStyle}">
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Margin" Value="0, 0, 0, 20"/>
@@ -69,12 +52,29 @@
 
     <Style x:Key="TemplateBorderStyle" TargetType="Border">
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <DrawingBrush Viewport="0, 0, 10, 10" ViewportUnits="Absolute" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{StaticResource PrimaryTextColor}">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <RectangleGeometry Rect="0, 0, 50, 50" />
+                                        <RectangleGeometry Rect="50, 50, 50, 50" />
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Setter.Value>
+        </Setter>
     </Style>
 
-    <Style x:Key="EarthDirectionComboStyle" TargetType="ComboBox">
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
         <Setter Property="Background" Value="{StaticResource SecondaryBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -91,7 +91,9 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Margin" Value="5, 0, 0, 0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20"/>
         <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}" />
 
         <Setter Property="Template">
@@ -109,16 +111,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
-                <Setter Property="Opacity" Value="0.85" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Opacity" Value="0.5" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
 
     <Style x:Key="ToolTipStyle" TargetType="ToolTip">

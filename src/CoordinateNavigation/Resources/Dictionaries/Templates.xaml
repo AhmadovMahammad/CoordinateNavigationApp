@@ -47,7 +47,11 @@
                     <StackPanel Margin="0, 0, 0, 5">
                         <TextBlock Text="North or South of the Equator"
                                    Style="{StaticResource InputPlaceholderStyle}" />
-                        <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                        <ComboBox Style="{StaticResource ComboBoxStyle}"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="North" />
+                            <ComboBoxItem Content="South" />
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
 
@@ -86,7 +90,11 @@
                     <StackPanel Margin="0, 0, 0, 5">
                         <TextBlock Text="East or West of the Prime Meridian"
                                    Style="{StaticResource InputPlaceholderStyle}" />
-                        <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                        <ComboBox Style="{StaticResource ComboBoxStyle}"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="East"/>
+                            <ComboBoxItem Content="West"/>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -159,7 +167,11 @@
                         <StackPanel Margin="0, 0, 0, 5">
                             <TextBlock Text="North or South of the Equator"
                                        Style="{StaticResource InputPlaceholderStyle}" />
-                            <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                            <ComboBox Style="{StaticResource ComboBoxStyle}"
+                                      SelectedIndex="0">
+                                <ComboBoxItem Content="North" />
+                                <ComboBoxItem Content="South" />
+                            </ComboBox>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -221,7 +233,11 @@
                         <StackPanel Margin="0, 0, 0, 5">
                             <TextBlock Text="East or West of the Prime Meridian"
                                        Style="{StaticResource InputPlaceholderStyle}" />
-                            <ComboBox Style="{StaticResource EarthDirectionComboStyle}" />
+                            <ComboBox Style="{StaticResource ComboBoxStyle}"
+                                      SelectedIndex="0">
+                                <ComboBoxItem Content="East"/>
+                                <ComboBoxItem Content="West"/>
+                            </ComboBox>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -229,31 +245,17 @@
         </Border>
     </DataTemplate>
 
-    <DataTemplate x:Key="operations_template">
-        <StackPanel DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}"
-                    HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-            <Button Content="⇄"
-                    Command="{Binding ToggleCoordinateTypeCommand}"
-                    Style="{StaticResource OperationButtonStyle}"
-                    ToolTip="Swap Coordinates"
-                    AutomationProperties.Name="Swap Coordinates Button" />
-            <Button Content="🗺"
-                    Style="{StaticResource OperationButtonStyle}"
-                    ToolTip="Display in Map" />
-        </StackPanel>
-    </DataTemplate>
-
     <!-- template: DD to DMS -->
     <DataTemplate x:Key="dd2dms_template">
         <Grid DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45*" />
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
 
             <ContentControl DataContext="{Binding DecimalCoordinateViewModel}" Grid.Column="0" ContentTemplate="{StaticResource dd_template}" />
-            <ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />
+            <!--<ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />-->
             <ContentControl DataContext="{Binding DmsCoordinateViewModel}" Grid.Column="2" ContentTemplate="{StaticResource dms_template}" IsEnabled="False" />
 
         </Grid>
@@ -264,12 +266,12 @@
         <Grid DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ContentControl}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45*" />
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
 
             <ContentControl DataContext="{Binding DmsCoordinateViewModel}" Grid.Column="0" ContentTemplate="{StaticResource dms_template}" />
-            <ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />
+            <!--<ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />-->
             <ContentControl DataContext="{Binding DecimalCoordinateViewModel}" Grid.Column="2" ContentTemplate="{StaticResource dd_template}" IsEnabled="False" />
 
         </Grid>
