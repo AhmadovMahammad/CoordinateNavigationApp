@@ -112,7 +112,7 @@ namespace CoordinateNavigation.MVVM.Models
                         EarthDirection.East or EarthDirection.West => -1,
                         _ => 1
                     },
-                    false => Degrees > 0 ? 1 : -1,
+                    false => Degrees >= 0 ? 1 : -1,
                 };
             }
         }

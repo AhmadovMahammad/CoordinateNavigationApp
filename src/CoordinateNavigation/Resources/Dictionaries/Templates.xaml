@@ -230,9 +230,8 @@
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
 
-            <ContentControl DataContext="{Binding DecimalCoordinate}" Grid.Column="0" ContentTemplate="{StaticResource dd_template}" />
-            <ContentControl DataContext="{Binding DmsCoordinate}" Grid.Column="2" ContentTemplate="{StaticResource dms_template}" IsEnabled="False" />
-
+            <ContentControl DataContext="{Binding DecimalCoordinate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" ContentTemplate="{StaticResource dd_template}" />
+            <ContentControl DataContext="{Binding DmsCoordinate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" ContentTemplate="{StaticResource dms_template}" IsEnabled="False" />
         </Grid>
     </DataTemplate>
 
@@ -245,9 +244,8 @@
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
 
-            <ContentControl DataContext="{Binding DmsCoordinate}" Grid.Column="0" ContentTemplate="{StaticResource dms_template}" />
-            <ContentControl DataContext="{Binding DecimalCoordinate}" Grid.Column="2" ContentTemplate="{StaticResource dd_template}" IsEnabled="False" />
-
+            <ContentControl DataContext="{Binding DmsCoordinate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" ContentTemplate="{StaticResource dms_template}" />
+            <ContentControl DataContext="{Binding DecimalCoordinate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" ContentTemplate="{StaticResource dd_template}" IsEnabled="False" />
         </Grid>
     </DataTemplate>
 

@@ -1,12 +1,13 @@
-﻿using CoordinateNavigation.Constants.Enums;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CoordinateNavigation.Constants.Enums;
 using CoordinateNavigation.MVVM.Models;
 using CoordinateNavigation.Services.Interfaces;
 
 namespace CoordinateNavigation.MVVM.ViewModels
 {
-    public abstract class BaseCoordinateViewModel
+    public abstract class BaseCoordinateViewModel : ObservableObject
     {
-        private readonly ICoordinateService _coordinateService;
+        protected readonly ICoordinateService _coordinateService;
 
         protected BaseCoordinateViewModel(ICoordinateService coordinateService)
         {
@@ -15,8 +16,8 @@ namespace CoordinateNavigation.MVVM.ViewModels
             Longitude = InitializeCoordinate(fromLatitude: false);
         }
 
-        public Coordinate Latitude { get; }
-        public Coordinate Longitude { get; }
+        public Coordinate Latitude { get; protected set; }
+        public Coordinate Longitude { get; protected set; }
 
         public IReadOnlyList<EarthDirection> LatitudeDirections => new[] { EarthDirection.North, EarthDirection.South };
         public IReadOnlyList<EarthDirection> LongitudeDirections => new[] { EarthDirection.East, EarthDirection.West };

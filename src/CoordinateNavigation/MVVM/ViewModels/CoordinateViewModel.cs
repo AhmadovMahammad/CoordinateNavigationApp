@@ -56,8 +56,8 @@ namespace CoordinateNavigation.MVVM.ViewModels
             //    Longitude: W 122° 25' 10"
 
             //DD Format:
-            //    Latitude: 37.80694° N
-            //    Longitude: -122.41944°
+            //    Latitude: N 37.80694°
+            //    Longitude: W 122.41944°
             #endregion
 
             string composite = IsDmsCoordinate switch

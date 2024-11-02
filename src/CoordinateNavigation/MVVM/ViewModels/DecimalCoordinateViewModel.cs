@@ -15,7 +15,11 @@ namespace CoordinateNavigation.MVVM.ViewModels
 
         public override void ConvertFromOpposite(Coordinate lat, Coordinate lon)
         {
-            throw new NotSupportedException("Conversion from DMS to Decimal not yet implemented.");
+            Latitude = _coordinateService.GetDecimalDegrees(lat);
+            Longitude = _coordinateService.GetDecimalDegrees(lon);
+
+            OnPropertyChanged(nameof(Latitude));
+            OnPropertyChanged(nameof(Longitude));
         }
 
         public override string GetCoordinateComposite()
