@@ -13,7 +13,7 @@ namespace CoordinateNavigation.Converters.ValueConverters
             return param switch
             {
                 "ConvertCoordinate" => $"Convert coordinates using {GestureBindings.ConvertCoordinateGesture.Modifiers} + {GestureBindings.ConvertCoordinateGesture.Key}",
-                "ToggleCoordinateType" => $"Toggle coordinate type with {GestureBindings.ToggleCoordinateTypeGesture.Modifiers} + {GestureBindings.ToggleCoordinateTypeGesture.Key}",
+                "ToggleCoordinateType" => $"Change coordinate type with {GestureBindings.ToggleCoordinateTypeGesture.Modifiers} + {GestureBindings.ToggleCoordinateTypeGesture.Key}",
                 "CopyCoordinate" => $"Copy coordinate using {GestureBindings.CopyGesture.Modifiers} + {GestureBindings.CopyGesture.Key}",
                 "ClearFields" => $"Clear fields with {GestureBindings.ClearGesture.Modifiers} + {GestureBindings.ClearGesture.Key}",
                 "ViewInMap" => $"View coordinates on map using {GestureBindings.ViewInMapGesture.Modifiers} + {GestureBindings.ViewInMapGesture.Key}",

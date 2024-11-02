@@ -35,6 +35,9 @@
 
         <extensions:RelayGestureBinding GestureBinding="{Binding Source={x:Static constants:GestureBindings.ClearGesture}}"
                                         CommandBinding="{Binding ClearFieldsCommand}"/>
+
+        <extensions:RelayGestureBinding GestureBinding="{Binding Source={x:Static constants:GestureBindings.ToggleAutoConversionGesture}}"
+                                        CommandBinding="{Binding ToggleAutoConversionCommand}"/>
     </Window.InputBindings>
 
     <Grid Margin="10, 5">
