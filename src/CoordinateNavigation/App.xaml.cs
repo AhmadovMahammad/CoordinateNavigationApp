@@ -1,5 +1,7 @@
 ﻿using CoordinateNavigation.MVVM.ViewModels;
-using CoordinateNavigation.MVVM.Views.Windows;
+using CoordinateNavigation.MVVM.Views;
+using CoordinateNavigation.Services.Implementations;
+using CoordinateNavigation.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Configuration;
@@ -16,6 +18,7 @@ namespace CoordinateNavigation
         {
             _host = Host.CreateDefaultBuilder().ConfigureServices((hostBuilderContext, serviceCollection) =>
             {
+                serviceCollection.AddSingleton<ICoordinateService, CoordinateService>();
                 serviceCollection.AddSingleton<CoordinateViewModel>();
                 serviceCollection.AddSingleton(serviceProvider =>
                 {

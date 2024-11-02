@@ -6,6 +6,8 @@
     <Style x:Key="templateButtonStyle" TargetType="Button">
         <Setter Property="ToolTipService.InitialShowDelay" Value="350"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -15,7 +17,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             CornerRadius="3">
-                        <ContentPresenter Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -87,14 +89,12 @@
 
     <Style x:Key="InfoButtonStyle" TargetType="Button" BasedOn="{StaticResource templateButtonStyle}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="ToolTipService.InitialShowDelay" Value="350"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}" />
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
         <Setter Property="Padding" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Width" Value="20"/>
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -122,6 +122,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="TextOptions.TextHintingMode" Value="Fixed"/>
+        <Setter Property="ToolTipService.Placement" Value="Right"/>
 
         <Setter Property="Effect">
             <Setter.Value>
@@ -138,6 +139,14 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="OperationButtonStyle" TargetType="Button" BasedOn="{StaticResource templateButtonStyle}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryTextColor}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBackground}" />
+        <Setter Property="Padding" Value="10, 5"/>
+        <Setter Property="Margin" Value="2, 0, 10, 0"/>
     </Style>
 
     <!-- Scrollbar Style -->

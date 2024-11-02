@@ -6,13 +6,13 @@ namespace CoordinateNavigation.Controls
     public partial class NumericControl : UserControl
     {
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-            nameof(Value), typeof(double), typeof(NumericControl), new PropertyMetadata { DefaultValue = (double)20 });
+            nameof(Value), typeof(double), typeof(NumericControl), new PropertyMetadata { DefaultValue = (double)0 });
 
         public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.Register(
              nameof(IsReadOnly), typeof(bool), typeof(NumericControl));
 
         public static readonly DependencyProperty StringFormatProperty = DependencyProperty.Register(
-            nameof(StringFormat), typeof(string), typeof(NumericControl));
+            nameof(StringFormat), typeof(string), typeof(NumericControl), new PropertyMetadata { DefaultValue = "F0" });
 
         public NumericControl()
         {

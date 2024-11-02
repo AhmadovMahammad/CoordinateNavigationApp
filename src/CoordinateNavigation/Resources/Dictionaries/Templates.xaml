@@ -36,22 +36,11 @@
                         <TextBlock Text="Input Latitude in Decimal Degrees"
                                    Style="{StaticResource InputPlaceholderStyle}" />
                         <controls:NumericControl Value="{Binding Latitude.Degrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                 StringFormat="F0"
+                                                 StringFormat="F6"
                                                  Height="30"
                                                  BorderBrush="{StaticResource BorderColor}"
                                                  BorderThickness="1" 
                                                  Padding="5" />
-                    </StackPanel>
-
-                    <!--Direction Input for Latitude-->
-                    <StackPanel Margin="0, 0, 0, 5">
-                        <TextBlock Text="North or South of the Equator"
-                                   Style="{StaticResource InputPlaceholderStyle}" />
-                        <ComboBox Style="{StaticResource ComboBoxStyle}"
-                                  SelectedIndex="0">
-                            <ComboBoxItem Content="North" />
-                            <ComboBoxItem Content="South" />
-                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
 
@@ -79,22 +68,11 @@
                         <TextBlock Text="Input Longitude in Decimal Degrees"
                                    Style="{StaticResource InputPlaceholderStyle}" />
                         <controls:NumericControl Value="{Binding Longitude.Degrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                 StringFormat="F0"
+                                                 StringFormat="F6"
                                                  Height="30"
                                                  BorderBrush="{StaticResource BorderColor}"
                                                  BorderThickness="1"
                                                  Padding="5" />
-                    </StackPanel>
-
-                    <!--Direction Input for Longitude-->
-                    <StackPanel Margin="0, 0, 0, 5">
-                        <TextBlock Text="East or West of the Prime Meridian"
-                                   Style="{StaticResource InputPlaceholderStyle}" />
-                        <ComboBox Style="{StaticResource ComboBoxStyle}"
-                                  SelectedIndex="0">
-                            <ComboBoxItem Content="East"/>
-                            <ComboBoxItem Content="West"/>
-                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -157,6 +135,7 @@
                             <TextBlock Text="Seconds (”)"
                                        Style="{StaticResource InputPlaceholderStyle}" />
                             <controls:NumericControl Value="{Binding Latitude.Seconds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     StringFormat="F4"
                                                      Height="30"
                                                      BorderBrush="{StaticResource BorderColor}"
                                                      BorderThickness="1" 
@@ -168,10 +147,8 @@
                             <TextBlock Text="North or South of the Equator"
                                        Style="{StaticResource InputPlaceholderStyle}" />
                             <ComboBox Style="{StaticResource ComboBoxStyle}"
-                                      SelectedIndex="0">
-                                <ComboBoxItem Content="North" />
-                                <ComboBoxItem Content="South" />
-                            </ComboBox>
+                                      ItemsSource="{Binding LatitudeDirections}"
+                                      SelectedItem="{Binding Latitude.EarthDirection, Mode=TwoWay}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -223,6 +200,7 @@
                             <TextBlock Text="Seconds (”)"
                                        Style="{StaticResource InputPlaceholderStyle}" />
                             <controls:NumericControl Value="{Binding Longitude.Seconds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     StringFormat="F4"
                                                      Height="30"
                                                      BorderBrush="{StaticResource BorderColor}"
                                                      BorderThickness="1" 
@@ -234,10 +212,8 @@
                             <TextBlock Text="East or West of the Prime Meridian"
                                        Style="{StaticResource InputPlaceholderStyle}" />
                             <ComboBox Style="{StaticResource ComboBoxStyle}"
-                                      SelectedIndex="0">
-                                <ComboBoxItem Content="East"/>
-                                <ComboBoxItem Content="West"/>
-                            </ComboBox>
+                                      ItemsSource="{Binding LongitudeDirections}"
+                                      SelectedItem="{Binding Longitude.EarthDirection, Mode=TwoWay}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -254,9 +230,8 @@
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
 
-            <ContentControl DataContext="{Binding DecimalCoordinateViewModel}" Grid.Column="0" ContentTemplate="{StaticResource dd_template}" />
-            <!--<ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />-->
-            <ContentControl DataContext="{Binding DmsCoordinateViewModel}" Grid.Column="2" ContentTemplate="{StaticResource dms_template}" IsEnabled="False" />
+            <ContentControl DataContext="{Binding DecimalCoordinate}" Grid.Column="0" ContentTemplate="{StaticResource dd_template}" />
+            <ContentControl DataContext="{Binding DmsCoordinate}" Grid.Column="2" ContentTemplate="{StaticResource dms_template}" IsEnabled="False" />
 
         </Grid>
     </DataTemplate>
@@ -270,9 +245,8 @@
                 <ColumnDefinition Width="45*" />
             </Grid.ColumnDefinitions>
 
-            <ContentControl DataContext="{Binding DmsCoordinateViewModel}" Grid.Column="0" ContentTemplate="{StaticResource dms_template}" />
-            <!--<ContentControl DataContext="{Binding}" Grid.Column="1" ContentTemplate="{StaticResource operations_template}" />-->
-            <ContentControl DataContext="{Binding DecimalCoordinateViewModel}" Grid.Column="2" ContentTemplate="{StaticResource dd_template}" IsEnabled="False" />
+            <ContentControl DataContext="{Binding DmsCoordinate}" Grid.Column="0" ContentTemplate="{StaticResource dms_template}" />
+            <ContentControl DataContext="{Binding DecimalCoordinate}" Grid.Column="2" ContentTemplate="{StaticResource dd_template}" IsEnabled="False" />
 
         </Grid>
     </DataTemplate>

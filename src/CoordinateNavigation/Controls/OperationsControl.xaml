@@ -3,10 +3,122 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CoordinateNavigation.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="10, 5">
+             xmlns:local="clr-namespace:CoordinateNavigation.Controls" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/" mc:Ignorable="d"
+             xmlns:converters="clr-namespace:CoordinateNavigation.Converters.ValueConverters">
 
-    </Grid>
+    <UserControl.Resources>
+        <converters:GestureTooltipConverter x:Key="GestureTooltipConverter"/>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+        <StackPanel Orientation="Horizontal">
+
+            <!-- convert coordinate -->
+            <Button Command="{Binding ConvertCoordinateCommand}" Style="{StaticResource OperationButtonStyle}">
+                <Button.Content>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <fa:FontAwesome Icon="Calculator"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Margin="0, 0, 5, 0"/>
+
+                            <TextBlock Text="Convert"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                                       Margin="5, 0, 0, 0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button.Content>
+                <Button.ToolTip>
+                    <ToolTip Content="{Binding Converter={StaticResource GestureTooltipConverter}, ConverterParameter=ConvertCoordinate}"
+                             Style="{StaticResource ToolTipStyle}" />
+                </Button.ToolTip>
+            </Button>
+
+            <!-- toggle coordinate type -->
+            <Button Command="{Binding ToggleCoordinateTypeCommand}" Style="{StaticResource OperationButtonStyle}">
+                <Button.Content>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <fa:FontAwesome Icon="ToggleOff"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Margin="0, 0, 5, 0" />
+
+                            <TextBlock Text="Toggle Coordinate"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                       Margin="5, 0, 0, 0" />
+                        </StackPanel>
+                    </StackPanel>
+                </Button.Content>
+                <Button.ToolTip>
+                    <ToolTip Content="{Binding Converter={StaticResource GestureTooltipConverter}, ConverterParameter=ToggleCoordinateType}"
+                             Style="{StaticResource ToolTipStyle}" />
+                </Button.ToolTip>
+            </Button>
+
+            <!-- copy coordinate -->
+            <Button Command="{Binding CopyCoordinateCommand}" Style="{StaticResource OperationButtonStyle}">
+                <Button.Content>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <fa:FontAwesome Icon="Copy"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Margin="0, 0, 5, 0" />
+
+                            <TextBlock Text="Copy Coordinate"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                       Margin="5, 0, 0, 0" />
+                        </StackPanel>
+                    </StackPanel>
+                </Button.Content>
+                <Button.ToolTip>
+                    <ToolTip Content="{Binding Converter={StaticResource GestureTooltipConverter}, ConverterParameter=CopyCoordinate}"
+                             Style="{StaticResource ToolTipStyle}" />
+                </Button.ToolTip>
+            </Button>
+
+            <!-- clear coordinate -->
+            <Button Command="{Binding ClearFieldsCommand}" Style="{StaticResource OperationButtonStyle}">
+                <Button.Content>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <fa:FontAwesome Icon="Remove"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Margin="0, 0, 5, 0" />
+
+                            <TextBlock Text="Clear Fields"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                       Margin="5, 0, 0, 0" />
+                        </StackPanel>
+                    </StackPanel>
+                </Button.Content>
+                <Button.ToolTip>
+                    <ToolTip Content="{Binding Converter={StaticResource GestureTooltipConverter}, ConverterParameter=ClearFields}"
+                             Style="{StaticResource ToolTipStyle}" />
+                </Button.ToolTip>
+            </Button>
+
+            <!-- view in map -->
+            <Button Command="{Binding ViewInMapCommand}" Style="{StaticResource OperationButtonStyle}">
+                <Button.Content>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <fa:FontAwesome Icon="MapOutline"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                            Margin="0, 0, 5, 0" />
+
+                            <TextBlock Text="View in Map"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                       Margin="5, 0, 0, 0" />
+                        </StackPanel>
+                    </StackPanel>
+                </Button.Content>
+                <Button.ToolTip>
+                    <ToolTip Content="{Binding Converter={StaticResource GestureTooltipConverter}, ConverterParameter=ViewInMap}"
+                             Style="{StaticResource ToolTipStyle}" />
+                </Button.ToolTip>
+            </Button>
+
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

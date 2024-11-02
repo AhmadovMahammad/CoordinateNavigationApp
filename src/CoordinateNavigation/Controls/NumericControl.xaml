@@ -10,7 +10,7 @@
     <mah:NumericUpDown Value="{Binding Value, Mode=TwoWay, ElementName=numericControl}"
                        IsReadOnly="{Binding IsReadOnly, ElementName=numericControl}"
                        StringFormat="{Binding StringFormat, ElementName=numericControl}"
-                       Minimum="0" Interval="1" NumericInputMode="All" Height="30"
+                       Interval="1" NumericInputMode="All" Height="30"
                        VerticalAlignment="Center">
         <mah:NumericUpDown.Style>
             <Style TargetType="{x:Type mah:NumericUpDown}" BasedOn="{StaticResource {x:Type mah:NumericUpDown}}">

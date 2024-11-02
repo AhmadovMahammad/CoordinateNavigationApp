@@ -3,15 +3,7 @@ using CoordinateNavigation.MVVM.Models;
 
 namespace CoordinateNavigation.Events
 {
-    public record CoordinateChangedEvent : IEvent
+    public record CoordinateChangedEvent(Coordinate Coordinate, bool IsLatitude) : IEvent
     {
-        public CoordinateChangedEvent(Coordinate coordinate, bool isLatitude)
-        {
-            Coordinate = coordinate;
-            IsLatitude = isLatitude;
-        }
-
-        public Coordinate Coordinate { get; init; }
-        public bool IsLatitude { get; init; }
     }
 }
