@@ -1,16 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CoordinateNavigation.Constants.Enums;
 using CoordinateNavigation.Events;
 using CoordinateNavigation.MVVM.Models;
+using CoordinateNavigation.MVVM.Views;
 using CoordinateNavigation.Services.Interfaces;
 using System.Windows;
-using CoordinateNavigation.Constants.Enums;
 
 namespace CoordinateNavigation.MVVM.ViewModels
 {
     public partial class CoordinateViewModel : ObservableObject
     {
         private readonly IEventAggregator _eventAggregator;
+        private readonly ICoordinateService _coordinateService;
 
         [ObservableProperty] private bool _isDmsCoordinate;
         [ObservableProperty] private bool _isActiveAutoConversion = true;
@@ -27,6 +29,7 @@ namespace CoordinateNavigation.MVVM.ViewModels
         public CoordinateViewModel(IEventAggregator eventAggregator, ICoordinateService coordinateService)
         {
             _eventAggregator = eventAggregator;
+            _coordinateService = coordinateService;
 
             DecimalCoordinate = new DecimalCoordinateViewModel(eventAggregator, coordinateService);
             DmsCoordinate = new DmsCoordinateViewModel(eventAggregator, coordinateService);
@@ -92,7 +95,16 @@ namespace CoordinateNavigation.MVVM.ViewModels
 
         private void OnViewInMapClicked()
         {
+            if (IsDmsCoordinate)
+            {
+                DecimalCoordinate.ConvertFromOpposite(DmsCoordinate.Latitude, DmsCoordinate.Longitude);
+            }
 
+            double latitude = DecimalCoordinate.Latitude.Degrees;
+            double longitude = DecimalCoordinate.Longitude.Degrees;
+
+            var mapView = new MapView(latitude, longitude);
+            mapView.Show();
         }
 
         private void OnClearFieldsClicked()

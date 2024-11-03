@@ -1,7 +1,6 @@
 ﻿using CoordinateNavigation.Constants.Enums;
 using CoordinateNavigation.MVVM.Models;
 using CoordinateNavigation.Services.Interfaces;
-using System.Net;
 
 namespace CoordinateNavigation.Services.Implementations
 {
